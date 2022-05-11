@@ -1,1 +1,37 @@
-
+<main class="bg-dark py-4 px-5 d-flex flex-column align-items-center gap-5">
+  <h1 class="text-white fs-1 fw-bold">Joke App</h1>
+  <div class="container rounded bg-white px-5 py-3">
+    <div class="w-100 d-flex flex-column align-items-start gap-4">
+      <h2 class="fs-3 fw-bold">Current Joke:</h2>
+      <div *ngIf="currentJoke; else loading">
+        <p class="fw-bold">{{currentJoke[0]}}</p>
+        <p class="fw-bold mt-1">{{currentJoke[1]}}</p>
+      </div>
+      <div class="align-self-center d-flex align-items-center gap-2">
+        <button type="button" class="btn btn-primary" [disabled]="!currentJoke || !activateBtn"
+          (click)="like(currentJoke)">Like</button>
+        <button type="button" class="btn btn-danger" [disabled]="!currentJoke || !activateBtn"
+          (click)="dislike(currentJoke)">Dislike</button>
+      </div>
+    </div>
+  </div>
+  <div class="container rounded bg-success p-5">
+    <h2 class="fs-3 fw-bold">Liked Jokes:</h2>
+    <ng-container *ngIf="likedJokes.length > 0">
+      <app-joke *ngFor="let joke of likedJokes; let i = index" [joke]="joke" [isLiked]="true" [index]="i + 1"
+        (changeCategory)="likeToDislike($event)">
+      </app-joke>
+    </ng-container>
+  </div>
+  <div class="container rounded bg-danger p-5">
+    <h2 class="fs-3 fw-bold">Disliked Jokes:</h2>
+    <ng-container *ngIf="dislikedJokes.length > 0">
+      <app-joke *ngFor="let joke of dislikedJokes; let i = index" [joke]="joke" [isLiked]="false" [index]="i + 1"
+        (changeCategory)="dislikeToLike($event)">
+      </app-joke>
+    </ng-container>
+  </div>
+</main>
+<ng-template #loading>
+  <p>Loading...</p>
+</ng-template>

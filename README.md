@@ -1,3 +1,10 @@
-Exercizes Angular Pt-2 for my school.
+# Angular - Exercise 12.1
 
-In every branch you can find a different Exercize
+- Per questo esercizio sfruttare la seguente API 
+https://api.covid19api.com/
+- Mostrare il numero complessivo di proprietà presenti nella risposta dell'API
+- Mostrare un elenco contenente i nomi di tutte le proprietà della risposta
+
+# Angular - Exercise 12.2
+
+- Utilizzando la stessa API, per ogni singola proprietà mostrare name ed endpoint

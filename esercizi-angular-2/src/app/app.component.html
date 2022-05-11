@@ -1,1 +1,18 @@
-
+<main class="container p-5">
+  <div *ngIf="response.length > 0; else loading">
+    <h1 class="fs-2 fw-bold">There are {{response.length}} properties:</h1>
+    <p class="mt-4">
+      Properties: [
+      <span *ngFor="let item of response"> "{{item[0]}}" </span>
+      ]
+    </p>
+    <h1 class="fs-1 fw-bold mt-5">Api Info:</h1>
+    <div class="mt-3" *ngFor="let item of response">
+      <p>Name: {{item[0]}}</p>
+      <p class="mt-1">EndPoint: {{item[1]}}</p>
+    </div>
+  </div>
+</main>
+<ng-template #loading>
+  <p>Loading...</p>
+</ng-template>
